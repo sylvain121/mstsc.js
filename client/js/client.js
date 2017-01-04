@@ -132,12 +132,13 @@
 		/**
 		 * connect
 		 * @param ip {string} ip target for rdp
+		 * @param port {string} rdp target port
 		 * @param domain {string} microsoft domain
 		 * @param username {string} session username
 		 * @param password {string} session password
 		 * @param next {function} asynchrone end callback
 		 */
-		connect : function (ip, domain, username, password, next) {
+		connect : function (ip, port, domain, username, password, next) {
 			// compute socket.io path (cozy cloud integration)
 			var parts = document.location.pathname.split('/')
 		      , base = parts.slice(0, parts.length - 1).join('/') + '/'
@@ -166,7 +167,7 @@
 			// emit infos event
 			this.socket.emit('infos', {
 				ip : ip, 
-				port : 3389, 
+				port : port, 
 				screen : { 
 					width : this.canvas.width, 
 					height : this.canvas.height 
